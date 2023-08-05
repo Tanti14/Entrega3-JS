@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <img src="./img/pizza.png" class="nav-logo" alt="">
+        <h1 class="animate-charcter">Pizza Planet</h1>
+        <img src="./img/pizza.png" class="nav-logo" alt="">
+      </nav>
+    </header>
+    <div class="main">
+      <form id="form-container" novalidate>
+        <input
+          type="number"
+          id="numberInput"
+          class="numInput"
+          placeholder="Ingrese el Id de una Pizza"
+        />
+        <input type="submit" id="subButton" class="btn" value="Buscar Pizza" />
+      </form>
+      <div id="answerContainer"></div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
