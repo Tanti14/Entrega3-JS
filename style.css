@@ -1,3 +1,4 @@
+/* Estilos Generales */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;800&display=swap");
 
 * {
@@ -20,7 +21,8 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
-
+/* ==================================================================================== */
+/* Estilos Navbar */
 .header {
   display: flex;
   justify-content: center;
@@ -43,58 +45,42 @@ body {
 .nav-logo {
   width: 120px;
 }
-
+/* ==================================================================================== */
+/* Estilos seccion principal */
 .main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 10px;
+  height: 100%;
 }
 
-.animate-charcter {
-  text-transform: uppercase;
-  background-image: linear-gradient(
-    -225deg,
-    #231557 0%,
-    #44107a 29%,
-    #ff1361 67%,
-    #fff800 100%
-  );
-  background-size: auto auto;
-  background-clip: border-box;
-  background-size: 200% auto;
-  color: #fff;
-  background-clip: text;
-  /* text-fill-color: transparent; */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textclip 2s linear infinite;
-  display: inline-block;
-  font-size: 50px;
-  font-weight: 800;
+/* Estilos contenedor de formulario y seccion de respuesta */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 40px;
+  margin-top: 60px;
 }
 
-@keyframes textclip {
-  to {
-    background-position: 200% center;
-  }
-}
 
-/* ================================================================ */
-
+/* ==================================================================================== */
+/* Estilos del Form */
 #form-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin: 40px 0 30px 0;
-  position: fixed;
-  top: 80px;
 }
 
+/* Estilos de Inputs: */
+/* Input number */
 .numInput {
   text-align: center;
   width: 230px;
@@ -105,14 +91,15 @@ body {
   background-size: 1000% 1000%;
   animation: gradient 5s ease infinite, changeBorderColor 5s linear infinite;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.247);
-  transition-duration: .1s;
+  transition-duration: 0.1s;
 }
 
 .numInput:focus {
   outline: none;
 }
 
-.btn{
+/* Input Submit (boton Buscar Pizza) */
+.btn {
   width: 230px;
   height: 30px;
   border: none;
@@ -127,23 +114,9 @@ body {
   background-size: 1000% 1000%;
   animation: gradient 5s ease infinite;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.247);
-  transition-duration: .1s;
+  transition-duration: 0.1s;
 }
-/* Button's gradient animation */
-@keyframes gradient {
-  0% {
-    background-position: 0 50%;
-  }
 
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0 50%;
-  }
-}
-/* Effect on Hover*/
 .btn::before {
   content: "";
   position: absolute;
@@ -151,21 +124,21 @@ body {
   height: 100%;
   left: -70px;
   top: 0;
-  background-color: rgba(214, 199, 255, 0.329);
+  background-color: rgb(255, 0, 0);
   filter: blur(10px);
-  transition-duration: .3s;
+  transition-duration: 0.3s;
   border-top-left-radius: 50%;
   border-bottom-right-radius: 50%;
 }
 
 .btn:hover::before {
   transform: translateX(250px);
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 }
-/* Effect on click */
+
 .btn:active {
-  transform: translate(2px,2px);
-  transition-duration: .1s;
+  transform: translate(2px, 2px);
+  transition-duration: 0.1s;
 }
 
 /* =============================================================== */
@@ -180,16 +153,19 @@ body {
   appearance: textfield;
 }
 /* =============================================================== */
+/* Estilo del contenedor de las cards de pizza encontrada y error */
 
 #answerContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: auto;
+  width: 250px;
+  height: 320px;
 }
 
+/* Estilos de las CARDS */
+/* Estilo de la Card que muestra la pizza encontrada */
 .card {
   display: flex;
   flex-direction: column;
@@ -200,39 +176,12 @@ body {
   background-color: grey;
   padding: 10px 15px;
   gap: 5px;
-  position: fixed;
-  top: 250px;
-
-  /* border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 20px; */
   background-color: rgba(255, 255, 255, 0.45);
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-
   backdrop-filter: blur(5px);
-
   border: 2px solid transparent;
   border-radius: 10px;
   animation: changeBorderColor 5s linear infinite;
-}
-
-@keyframes changeBorderColor {
-  0% {
-    border-color: #ff0000; /* Rojo */
-    /* transform: rotate(0deg); */
-  }
-  25% {
-    border-color: #00ff00; /* Verde */
-  }
-  50% {
-    border-color: #0000ff; /* Azul */
-  }
-  75% {
-    border-color: #ffff00; /* Amarillo */
-  }
-  100% {
-    border-color: #ff00ff; /* Magenta */
-    /* transform: rotate(360deg); */
-  }
 }
 
 .card > p {
@@ -249,8 +198,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
+/* Diseño de la Card Inicial (Cuando se ingresa por primera vez y el LocalStorage esta vacio */
+
+
+
+/* Diseño de la card que se muetra cuando sale un error */
 .errorCard {
   display: flex;
   flex-direction: column;
@@ -258,12 +213,8 @@ body {
   align-items: center;
   width: 250px;
   height: 320px;
-  padding: 0 5px;
   border-radius: 20px;
-  position: fixed;
-  top: 250px;
-  gap: 5px;
-
+  gap: 10px;
 
   border: 2px solid transparent;
   animation: blink 0.5s infinite;
@@ -272,11 +223,95 @@ body {
   backdrop-filter: blur(5px);
 }
 
-.errorCard-img {
+.errCard-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.errCard-title {
+  animation: blinkText 0.5s infinite;
+}
+
+.errCard-msg {
+  font-size: 13px;
+}
+
+.errCard-img {
   width: 200px;
   border-radius: 18px;
 }
 
+
+/* ============================================================================= */
+/* Animaciones */
+
+/* Propiedades y animacion de texto multicolor en Navbar y Cards */
+.animate-text {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+  font-size: 50px;
+  font-weight: 800;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Animacion de degradado en background de Inputs Number y Submit */
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* Animacion de cambio de color en borde de Card de pizza encontrada */
+@keyframes changeBorderColor {
+  0% {
+    border-color: #ff0000; /* Rojo */
+  }
+  25% {
+    border-color: #00ff00; /* Verde */
+  }
+  50% {
+    border-color: #0000ff; /* Azul */
+  }
+  75% {
+    border-color: #ffff00; /* Amarillo */
+  }
+  100% {
+    border-color: #ff00ff; /* Magenta */
+  }
+}
+
+/* Animacion de parpadeo en texto y borde en Card de Error */
 @keyframes blink {
   0% {
     border: 2px solid red;
@@ -289,7 +324,17 @@ body {
   }
 }
 
-.showErr {
-  color: white;
-  text-align: center;
+@keyframes blinkText {
+  0% {
+    color: red;
+  }
+  50% {
+    color: white;
+  }
+  100% {
+    color: red;
+  }
 }
+
+
+/* ============================================================================= */

@@ -53,7 +53,6 @@ const answerContainer = document.getElementById("answerContainer");
 const ultimoItem = JSON.parse(localStorage.getItem("ultimoItem")) || [];
 
 // Función para guardar los usuarios en el localStorage
-
 const saveToLocalStorage = (last) => {
   localStorage.setItem("ultimoItem", JSON.stringify(last));
 };
@@ -66,7 +65,7 @@ const buscarID = (id) => {
 const createCard = (pizza) => {
   answerContainer.innerHTML = `
   <div class="card">
-  <p class="animate-charcter">PIZZA ENCONTRADA</p>
+  <p class="animate-text">PIZZA ENCONTRADA</p>
     <img src="${pizza.imagen}" class="card-img" alt="img pizza" />
       <div class="card-info">
         <p class="pizza-name"><span>${pizza.nombre}</span></p>
@@ -79,8 +78,7 @@ const recuperarPizza = () => {
   if (ultimoItem) {
     answerContainer.innerHTML = `
     <div class="card">
-    <p class="animate-charcter">ULTIMA PIZZA BUSCADA</p>
-    
+    <p class="animate-text">ULTIMA PIZZA BUSCADA</p>
       <img src="${ultimoItem.imagen}" class="card-img" alt="img pizza" />
         <div class="card-info">
           <p class="pizza-name"><span>${ultimoItem.nombre}</span></p>
@@ -88,33 +86,46 @@ const recuperarPizza = () => {
         </div>
     </div>`;
   }
+
+
+  if(ultimoItem.id == undefined) {
+    answerContainer.innerHTML = `
+    <div class="card">
+    <p class="animate-text">BUSCADOR DE PIZZAS</p>
+        <div class="errCard-text">
+          <p>Ingrese un ID para obtener una pizza.</p>
+        </div>
+        <img src="./img/pizza-vector.png" class="card-img" alt="img pizza" />
+    </div>`;
+  }
 };
 
 // =========================================================================
-
+// Funcion que crea una Card para los errores.
 const showError = (message) => {
   return (answerContainer.innerHTML = `
   <div class="errAnimation errorCard">
-    <p class="showErr">¡ERROR!</p>
-    <p class="showErr">${message}</p>
-    <img src="./img/error404-nopizza.jpg" class="errorCard-img" alt="img pizza" /> 
-    
+    <div class="errCard-text">
+      <h2 class="errCard-title">¡ERROR!</h2>
+      <p class="errCard-msg">${message}</p>
+    </div>
+    <img src="./img/error404-nopizza.jpg" class="errCard-img" alt="img pizza" />
   </div>`);
 };
 
 // =========================================================================
-
-const verificacion = (input) => {
+// Funcion para verificar si el input tiene algun valor valido o no.
+const isEmpty = (input) => {
   return !input.value;
 };
 
-// =========================================================================
 const checkInput = (input) => {
   let valid = false;
 
-  if (verificacion(input)) {
+  if (isEmpty(input)) {
+    valid = false;
     showError(
-      "No se admiten letras ni simbolos. Porfavor, ingrese un ID númerico."
+      "Este campo no se puede omitir. Porfavor, ingrese un ID válido."
     );
     return;
   }
@@ -124,16 +135,16 @@ const checkInput = (input) => {
 };
 
 // =========================================================================
-
 const ejecutar = (e) => {
   e.preventDefault();
 
+  // Guardo en una variable el valor que ingresa por el Input ya validado.
   let isValidInput = checkInput(numberInput);
 
   if (isValidInput) {
     // Guardo el valor del ID que viene del input en una variable
     const idIngresado = numberInput.value;
-
+    recuperarPizza(ultimoItem)
     // buscarID() devuelve el primer elemento que encuentre que cumpla la condicion.
     // Guardo ese elemento en la variable pizzaEncontrada.
     let pizzaEncontrada = buscarID(idIngresado);
@@ -145,7 +156,7 @@ const ejecutar = (e) => {
       createCard(pizzaEncontrada);
       saveToLocalStorage(pizzaEncontrada);
     } else {
-      showError("No se encontro una pizza para mostrar");
+      showError("No se encontro la pizza deseada. Porfavor, ingrese un ID diferente.");
     }
   }
 };
